@@ -6,7 +6,10 @@
  * @flow
  */
 
-import React from 'react';
+import React, {Component} from 'react';
+import Component1 from './app/components/Component1/Component1';
+import Component2 from './app/components/Component2/Component2';
+import Component3 from './app/components/Component3/Component3';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +17,8 @@ import {
   View,
   Text,
   StatusBar,
+  TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -24,54 +29,53 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+export default class App extends Component {
 
+  render() {
+    return (
+      <>
+        {/* <View style={styles.myView}>
+          <Text style={styles.myText}> App calling!</Text>
+          <Component1 msg="Call to Component1" />
+          <Component2 msg="Call to Component2" />
+        </View> */}
+        <Component3 />
+      </>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  myView: {
+    backgroundColor: 'blue',
+  },
+  myText: {
+    color: 'white',
+  },
+  container: {
+    flexDirection: 'row',
+    height: 100,
+  },
+  v1: {
+    flex: 1,
+    backgroundColor: 'red',
+    padding: 10,
+  },
+  v2: {
+    flex: 1,
+    backgroundColor: 'green',
+    padding: 10,
+  },
+  v3: {
+    flex: 1,
+    backgroundColor: 'black',
+    padding: 10,
+  },
+  vText: {
+    color: 'white',
+  },
+});
+/*
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: Colors.lighter,
@@ -110,5 +114,4 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
-
-export default App;
+*/
